@@ -1,0 +1,47 @@
+{
+  "name": "antifingerprinting",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run clean && webpack",
+    "clean": "rm -Rf .node_modules/.cache/ ourExtension/contentScript.js src/.extension-bundle.*.js",
+    "develop": "web-ext run -s ourExtension -t chromium --chromium-binary /usr/bin/google-chrome --start-url https://www.cs.uic.edu/~skarami/test.html & webpack -w --mode=development",
+    "production": "web-ext run -s ourExtension -t chromium --chromium-binary /usr/bin/google-chrome & webpack -w --mode=production",
+    "lint": "xo src/ webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sefcom/anti-fingerprinting.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/sefcom/anti-fingerprinting/issues"
+  },
+  "homepage": "https://github.com/sefcom/anti-fingerprinting#readme",
+  "devDependencies": {
+    "raw-loader": "^4.0.1",
+    "string-replace-loader": "^2.3.0",
+    "uuid": "^8.3.2",
+    "web-ext": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "xo": "^0.32.1"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  },
+  "xo": {
+    "globals": [
+      "Document",
+      "document"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "import/no-webpack-loader-syntax": "off",
+      "unicorn/prefer-reflect-apply": "off"
+    },
+    "space": true
+  }
+}

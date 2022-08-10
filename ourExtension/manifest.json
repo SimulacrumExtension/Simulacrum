@@ -1,0 +1,30 @@
+{
+	"name": "Simulacra",
+	"version": "1.0",
+	"description": "Preventing DOM-Based extension fingerprinting",
+	"manifest_version": 2,
+
+	"permissions": ["activeTab","<all_urls>","management","tabs", "contextMenus","storage", "webNavigation"],
+	"background": {
+    		"scripts": ["background.js"],
+    		"persistent": false
+  	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"run_at": "document_start",
+			"all_frames": true,
+			"match_about_blank": true,
+			"js": ["contentScript.js"]
+		}
+	],
+	"browser_action": {
+		"default_icon" : "simulacrum_48.png"
+	},
+	"icons": {
+		"48": "simulacrum_48.png",
+		"128": "simulacrum_128.png"
+
+	}
+
+}
